@@ -4,7 +4,7 @@ fn deg_to_cardinal_acc(deg: &f64) -> &'static str {
     let directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW", "N"];
     // goes to next on tie, see table below
     if *deg > 360.0 {
-        panic!("Angle {} is out of range. Must be  0 and 360", deg);
+        panic!("Angle {} is out of range. Must be  0-360", deg);
     }
     let index = ((deg + 22.5) / 45.0) as usize;
     directions[index]
@@ -15,7 +15,7 @@ fn deg_to_cardinal_fast(deg: &u16) -> &'static str {
     let index = if *deg < 360 {
         (deg + 23) / 45
     } else {
-        panic!("Angle {} is out of range. Must be between 0 and 359", deg);
+        panic!("Angle {} is out of range. Must be between 0-360", deg);
     } as usize;
     directions[index]
 }
